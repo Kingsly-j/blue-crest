@@ -2,7 +2,7 @@
 
 Type `admin` outside inputs or editable fields on any page to open the admin login. On mobile, append `?admin=1` (or `&admin=1` when a query already exists) or `#admin` to any page URL. `/admin?admin=1` also opens login directly.
 
-The super admin email is `support@bluecrestlogistics.com`. The generated initial password is stored in the ignored `.env` file as `BLUECREST_SUPER_ADMIN_PASSWORD`. The client includes its SHA-256 verifier in `lib/admin-bootstrap.ts`.
+The super admin email is `support@bluecrestshipping.com`. The generated initial password is stored in the ignored `.env` file as `BLUECREST_SUPER_ADMIN_PASSWORD`. The client includes its SHA-256 verifier in `lib/admin-bootstrap.ts`.
 
 Admin accounts and sessions use browser localStorage, matching the requested Atlas workflow. Added admins are available only in the browser profile where they were created. Clearing browser storage removes those accounts and sessions. Role filtering is a browser behavior, not server authorization.
 
@@ -36,7 +36,7 @@ Verification: `node scripts/check-shipment-history.mjs` checks automatic activit
 
 ## WhatsApp and language controls
 
-Payment buttons offer WhatsApp or email to support@bluecrestlogistics.com with the same prepared details. The WhatsApp option and floating WhatsApp button open `https://wa.me/19152019157` for **+1 (915) 201-9157**. Payment messages include the tracking number, editable fee name and amount, sender / receiver details, cargo, route, status, and delivery estimate. Opening the link prepares a message; the visitor sends it in WhatsApp. A shipment's old payment-support email does not override this destination.
+Payment buttons offer WhatsApp or email to support@bluecrestshipping.com with the same prepared details. The WhatsApp option and floating WhatsApp button open `https://wa.me/19152019157` for **+1 (915) 201-9157**. Payment messages include the tracking number, editable fee name and amount, sender / receiver details, cargo, route, status, and delivery estimate. Opening the link prepares a message; the visitor sends it in WhatsApp. A shipment's old payment-support email does not override this destination.
 
 The floating language icon offers English, French, Spanish, Arabic, German, Portuguese, and Simplified Chinese. Interface translations are bundled locally, the choice is remembered in browser storage, and Arabic uses right-to-left layout. Customer-entered names and shipment notes remain as entered. Translation dictionaries are in `lib/languages.ts` and `lib/international-translations.ts`; public page text is localized in `app/reference-page.tsx` and React interfaces through `app/language-provider.tsx`.
 

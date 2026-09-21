@@ -46,7 +46,7 @@ type AdminAccount = {
 
 const ADMIN_SESSION_KEY = "bluecrest-logistics-admin-session";
 const ADMIN_ACCOUNTS_KEY = "bluecrest-logistics-admin-accounts";
-const SUPER_ADMIN_EMAIL = "support@bluecrestlogistics.com";
+const SUPER_ADMIN_EMAIL = "support@bluecrestshipping.com";
 
 
 const superAdminAccount: AdminAccount = {

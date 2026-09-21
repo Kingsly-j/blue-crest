@@ -58,7 +58,7 @@ for (const page of pages) {
   if (page === 'home') $('h2').filter((_, el) => $(el).text().trim() === 'What Our Clients Say').closest('section').replaceWith(renderTestimonials());
   const brandedHtml = $('body').html()
     .replaceAll('JM Logistic Trace', 'Bluecrest Logistics')
-    .replaceAll('Support@jmlogistictrace.com', 'support@bluecrestlogistics.com');
+    .replaceAll('Support@jmlogistictrace.com', 'support@bluecrestshipping.com');
   await writeFile(`app/content/${page}.html`, `<div x-data="{ mobileMenuOpen: false, searchOpen: false }">${brandedHtml}</div>`);
 }
 await writeFile('reference/assets.json', JSON.stringify([...assets].map(([url, local]) => ({url, path: `public${local}`})), null, 2));

@@ -15,7 +15,7 @@ try {
   const errors=[];
   page.on('pageerror',error=>errors.push(error.message));
   await page.goto('http://localhost:3000/admin?admin=1');
-  await page.getByLabel('Email',{exact:true}).fill('support@bluecrestlogistics.com');
+  await page.getByLabel('Email',{exact:true}).fill('support@bluecrestshipping.com');
   await page.getByLabel('Password',{exact:true}).fill('wrong-password');
   await page.getByRole('button',{name:'Login',exact:true}).click();
   await expect(page.getByText('Invalid admin email or password.')).toBeVisible();

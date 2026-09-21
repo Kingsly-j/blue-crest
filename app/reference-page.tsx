@@ -57,8 +57,8 @@ export default function ReferencePage({ html }: { html: string }) {
     if (!feedback) return;
     feedback.hidden = false;
     feedback.textContent = form.dataset.formKind === "tracking"
-      ? "Live shipment tracking is not connected yet. Please contact support@bluecrestlogistics.com for shipment updates."
-      : "Your message has not been sent. Contact delivery is not connected yet. Please email support@bluecrestlogistics.com directly.";
+      ? "Live shipment tracking is not connected yet. Please contact support@bluecrestshipping.com for shipment updates."
+      : "Your message has not been sent. Contact delivery is not connected yet. Please email support@bluecrestshipping.com directly.";
     feedback.focus();
   }} dangerouslySetInnerHTML={{ __html: translatedHtml }} />;
 }

@@ -28,7 +28,7 @@ try {
   } catch(error) {failures++;console.log(`FAIL Supabase: ${error.message}`);}
   if (!process.argv.includes('--supabase-only')) try {
     const now = new Date().toISOString();
-    const record = {id,trackingCode:`BC-VERIFY-${id.slice(-8)}`,customerName:'Integration verification — delete after test',customerEmail:'',cargoDescription:'Temporary integration test',origin:'Test origin',destination:'Test destination',location:'Test location',status:'Booked',eta:now,createdBy:'support@bluecrestlogistics.com',createdByRole:'Super admin',createdAt:now,updatedAt:now};
+    const record = {id,trackingCode:`BC-VERIFY-${id.slice(-8)}`,customerName:'Integration verification — delete after test',customerEmail:'',cargoDescription:'Temporary integration test',origin:'Test origin',destination:'Test destination',location:'Test location',status:'Booked',eta:now,createdBy:'support@bluecrestshipping.com',createdByRole:'Super admin',createdAt:now,updatedAt:now};
     if(photoCreated) {record.photoPath=photoPath;record.photoUrl=`${storageUrl}/object/public/${bucket}/${photoPath}`;}
     const fields = Object.fromEntries(Object.entries(record).map(([key,value])=>[key,{stringValue:value}]));
     fields.progress = {integerValue:'18'};

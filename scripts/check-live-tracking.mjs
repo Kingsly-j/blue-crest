@@ -19,7 +19,7 @@ try {
   const admin=await browser.newPage();
   admin.setDefaultTimeout(25000);
   await admin.goto('http://localhost:3000/admin?admin=1');
-  await admin.getByLabel('Email',{exact:true}).fill('support@bluecrestlogistics.com');
+  await admin.getByLabel('Email',{exact:true}).fill('support@bluecrestshipping.com');
   await admin.getByLabel('Password',{exact:true}).fill(process.env.BLUECREST_SUPER_ADMIN_PASSWORD);
   await admin.getByRole('button',{name:'Login',exact:true}).click();
   await expect(admin.getByRole('heading',{name:'New cargo file'})).toBeVisible();

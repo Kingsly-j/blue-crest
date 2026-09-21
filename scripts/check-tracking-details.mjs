@@ -1,4 +1,4 @@
-﻿import { chromium, expect as baseExpect } from '@playwright/test';
+import { chromium, expect as baseExpect } from '@playwright/test';
 import { randomUUID } from 'node:crypto';
 import { mkdir } from 'node:fs/promises';
 
@@ -20,7 +20,7 @@ function decode(value) {
   return value.stringValue ?? value.booleanValue ?? value.doubleValue ?? Number(value.integerValue);
 }
 async function readRecord() {const response=await fetch(endpoint);if(!response.ok)throw Error(`Fixture read failed (${response.status})`);return decode({mapValue:await response.json()});}
-const fixture={id,trackingCode:code,customerName:'Tracking layout test',customerEmail:'receiver@example.com',cargoDescription:'Test parcel',origin:'Dubai, United Arab Emirates',destination:'London, United Kingdom',location:'Rome, Italy',status:'Booked',eta:'2026-10-10',progress:18,createdBy:'support@bluecrestlogistics.com',createdByRole:'Super admin',createdAt:new Date().toISOString(),updatedAt:new Date().toISOString()};
+const fixture={id,trackingCode:code,customerName:'Tracking layout test',customerEmail:'receiver@example.com',cargoDescription:'Test parcel',origin:'Dubai, United Arab Emirates',destination:'London, United Kingdom',location:'Rome, Italy',status:'Booked',eta:'2026-10-10',progress:18,createdBy:'support@bluecrestshipping.com',createdByRole:'Super admin',createdAt:new Date().toISOString(),updatedAt:new Date().toISOString()};
 let browser;
 try {
   const seed=await fetch(endpoint,{method:'PATCH',headers:{'Content-Type':'application/json'},body:JSON.stringify(encode(fixture).mapValue)});
@@ -32,7 +32,7 @@ try {
   await context.route('https://maps.google.com/**',route=>route.fulfill({status:200,contentType:'text/html',body:'Map placeholder for browser test'}));
   const admin=await context.newPage();admin.setDefaultTimeout(25000);
   const errors=[];admin.on('pageerror',error=>errors.push(error.message));
-  await admin.addInitScript(()=>localStorage.setItem('bluecrest-logistics-admin-session','support@bluecrestlogistics.com'));
+  await admin.addInitScript(()=>localStorage.setItem('bluecrest-logistics-admin-session','support@bluecrestshipping.com'));
   await admin.goto(`${baseUrl}/admin?admin=1`);
   await admin.getByRole('button').filter({hasText:code}).first().click();
   const editor=admin.locator('form').filter({has:admin.getByRole('heading',{name:'Edit tracking information'})});

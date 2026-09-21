@@ -1,4 +1,4 @@
-﻿import { chromium, expect } from '@playwright/test';
+import { chromium, expect } from '@playwright/test';
 import { readFile } from 'node:fs/promises';
 const password=(await readFile('.env','utf8')).match(/^BLUECREST_SUPER_ADMIN_PASSWORD=(.+)$/m)?.[1].trim();
 const browser=await chromium.launch({channel:'msedge'});
@@ -12,7 +12,7 @@ try {
   await page.setViewportSize({width,height:900});
   await page.goto('http://localhost:3000/admin?admin=1');
   if(await page.getByRole('button',{name:'Login',exact:true}).isVisible()) {
-   await page.getByLabel('Email',{exact:true}).fill('support@bluecrestlogistics.com');
+   await page.getByLabel('Email',{exact:true}).fill('support@bluecrestshipping.com');
    await page.getByLabel('Password',{exact:true}).fill(password);
    await page.getByRole('button',{name:'Login',exact:true}).click();
   }

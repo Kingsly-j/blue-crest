@@ -13,7 +13,7 @@ export function shipmentPaymentLink(shipment: Shipment, feeName: string, formatt
 
 export function shipmentPaymentEmailLink(shipment: Shipment, feeName: string, formattedAmount: string) {
   const subject = `Payment for ${feeName} - ${shipment.trackingCode}`;
-  return `mailto:support@bluecrestlogistics.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(shipmentPaymentMessage(shipment, feeName, formattedAmount))}`;
+  return `mailto:support@bluecrestshipping.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(shipmentPaymentMessage(shipment, feeName, formattedAmount))}`;
 }
 
 function shipmentPaymentMessage(shipment: Shipment, feeName: string, formattedAmount: string) {
