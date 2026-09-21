@@ -18,7 +18,6 @@ import {
 } from "@/lib/shipments";
 import { createClient } from "@/utils/supabase/client";
 import ShipmentDetailsEditor, { ShipmentFields, validateTrackingDetails } from "./shipment-details-editor";
-import SupportInbox from "./support-inbox";
 
 async function hashPassword(password: string) {
   const digest = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(password));
@@ -432,7 +431,6 @@ export default function AdminPage() {
           <option value="overview">Overview &amp; account</option>
           <option value="create">Create shipment</option>
           <option value="records">Shipment records</option>
-          <option value="support">Customer support</option>
           <option value="details">Update shipment</option>
           {currentAdmin?.role === "Super admin" ? <option value="admins">Manage admins</option> : null}
         </select>
@@ -540,7 +538,6 @@ export default function AdminPage() {
           </form>
 
           <div className="contents lg:grid lg:gap-6">
-            <SupportInbox operatorEmail={currentAdmin!.email} />
             <section data-dashboard-panel="records" className="rounded-[28px] border border-blue-100 bg-white p-5 shadow-xl shadow-blue-950/10 sm:p-8">
               <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
                 <div>

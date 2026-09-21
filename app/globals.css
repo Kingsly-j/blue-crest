@@ -228,34 +228,11 @@ a:focus-visible, button:focus-visible { outline: 3px solid #60a5fa; outline-offs
  .tracking-parcel-grid { grid-template-columns:repeat(3,minmax(0,1fr)); }
 }
 .floating-tools { position:fixed; inset-inline-end:20px; bottom:calc(20px + env(safe-area-inset-bottom)); z-index:70; display:flex; flex-direction:column; align-items:center; gap:12px; }
-.floating-livechat, .floating-whatsapp { display:grid; place-items:center; width:58px; height:58px; border-radius:50%; box-shadow:0 5px 20px #14233735; transition:transform .15s,background .15s; }
-.floating-livechat { background:#2563eb; color:white; font-size:25px; border:0; }
-.floating-livechat:hover { background:#1d4ed8; transform:translateY(-2px); }
+.floating-whatsapp { display:grid; place-items:center; width:58px; height:58px; border-radius:50%; box-shadow:0 5px 20px #14233735; transition:transform .15s,background .15s; }
 .floating-whatsapp { position:fixed; left:20px; bottom:calc(20px + env(safe-area-inset-bottom)); background:#20bd5a; color:white; font-size:31px; }
 .floating-whatsapp:hover { background:#139746; transform:translateY(-2px); }
 .floating-language { display:flex; align-items:center; gap:6px; min-height:46px; padding:10px 12px; border:1px solid #dae4ef; border-radius:25px; background:white; color:#163e70; box-shadow:0 4px 15px #14233720; font-size:12px; font-weight:700; }
 .floating-language i { font-size:21px; }
-.live-chat-panel { position:absolute; right:0; bottom:170px; width:min(340px, calc(100vw - 32px)); border:1px solid #dce5ee; border-radius:22px; background:white; box-shadow:0 18px 45px #1423372f; overflow:hidden; }
-.live-chat-header { display:flex; align-items:center; justify-content:space-between; gap:12px; padding:12px 14px; background:linear-gradient(135deg,#1e3a8a,#2563eb); color:white; }
-.live-chat-header > div { display:flex; align-items:center; gap:8px; }
-.live-chat-status-dot { width:10px; height:10px; border-radius:50%; background:#94a3b8; box-shadow:0 0 0 4px rgba(148,163,184,.2); }.live-chat-status-dot.online { background:#4ade80; box-shadow:0 0 0 4px rgba(74,222,128,.2); }
-.live-chat-header strong { font-size:14px; }
-.live-chat-header button { min-width:36px; min-height:36px; border-radius:50%; border:0; background:rgba(255,255,255,0.15); color:white; font-size:22px; }
-.live-chat-messages { display:flex; flex-direction:column; gap:12px; max-height:260px; overflow:auto; padding:14px; background:#f8fbff; }
-.live-chat-bubble { display:flex; flex-direction:column; gap:8px; max-width:82%; padding:10px 12px; border-radius:16px; font-size:13px; line-height:1.5; }
-.live-chat-bubble.assistant { align-self:flex-start; background:#eaf2ff; color:#1f2d3d; border-bottom-left-radius:6px; }
-.live-chat-bubble.user { align-self:flex-end; background:#2563eb; color:white; border-bottom-right-radius:6px; }
-.live-chat-bubble a { display:inline-flex; align-items:center; justify-content:center; border-radius:999px; background:#ffffff; color:#1d4ed8; padding:7px 10px; font-weight:700; text-decoration:none; }
-.live-chat-input-row { display:flex; gap:10px; padding:12px 14px 14px; background:#fff; }
-.live-chat-input-row input { flex:1; min-height:42px; border:1px solid #d9e4ee; border-radius:12px; background:#f8fafc; padding:10px 12px; color:#1d2a39; }
-.live-chat-input-row button { min-width:72px; min-height:42px; border:0; border-radius:12px; background:#2563eb; color:white; font-weight:700; }
-.live-chat-input-row button:disabled { opacity:0.6; cursor:not-allowed; }
-.support-email-consent { display:grid; gap:14px; padding:20px; background:white; color:#17324d; }
-.support-email-consent > * { width:100%; }
-.support-email-consent h2,.support-email-consent p,.support-email-consent input,.support-email-consent button { margin:0; border-radius:14px; padding:14px; }
-.support-email-consent h2,.support-email-consent p { background:white; }
-.support-email-consent input { border:1px solid #d9e4ee; }
-.support-email-consent button { border:0; background:#2563eb; color:white; font-weight:700; }
 .language-popover { position:absolute; bottom:130px; inset-inline-end:0; width:210px; padding:10px; border:1px solid #dce5ee; border-radius:16px; background:white; box-shadow:0 10px 35px #14233730; color:#17324d; }
 .language-popover-heading { display:flex; align-items:center; justify-content:space-between; padding:0 8px 5px; }
 .language-popover-heading button { min-width:40px; min-height:40px; font-size:22px; }
@@ -273,10 +250,8 @@ html[dir=rtl] .tracking-milestones li:first-child:before { left:0; }
 html[dir=rtl] .tracking-milestones li:last-child:before { left:50%; }
 @media(max-width:700px) {
  .floating-tools { inset-inline-end:14px; bottom:calc(14px + env(safe-area-inset-bottom)); }
- .floating-livechat, .floating-whatsapp { width:52px; height:52px; font-size:27px; }
+ .floating-whatsapp { width:52px; height:52px; font-size:27px; }
  .floating-whatsapp { left:14px; bottom:calc(14px + env(safe-area-inset-bottom)); }
- .live-chat-panel { position:fixed; right:10px; bottom:78px; width:calc(100vw - 20px); max-height:calc(100dvh - 100px); z-index:90; }
- .live-chat-messages { max-height:calc(100dvh - 285px); }
  .shipment-tracking-page { padding-bottom:150px; }
  html[dir=rtl] .tracking-current { text-align:right; }
  html[dir=rtl] .tracking-milestones li { text-align:right; }

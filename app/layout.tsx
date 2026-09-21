@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { headers } from "next/headers";
 import localFont from "next/font/local";
+import Script from "next/script";
 import AdminAccess from "./admin-access";
 import { LanguageProvider } from "./language-provider";
 import FloatingTools from "./floating-tools";
@@ -39,7 +40,24 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${inter.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col"><LanguageProvider><AdminAccess />{children}<FloatingTools /></LanguageProvider></body>
+      <body className="min-h-full flex flex-col">
+        <LanguageProvider><AdminAccess />{children}<FloatingTools /></LanguageProvider>
+        <Script id="smartsupp-live-chat" strategy="beforeInteractive">
+          {`var _smartsupp = _smartsupp || {};
+_smartsupp.key = '782828b9c274fe26e71a8b4a5b2ad561ebfb47a8';
+window.smartsupp || (function(d) {
+  var s, c, o = smartsupp = function() { o._.push(arguments); };
+  o._ = [];
+  s = d.getElementsByTagName('script')[0];
+  c = d.createElement('script');
+  c.type = 'text/javascript';
+  c.charset = 'utf-8';
+  c.async = true;
+  c.src = 'https://www.smartsuppchat.com/loader.js?';
+  s.parentNode.insertBefore(c, s);
+})(document);`}
+        </Script>
+      </body>
     </html>
   );
 }
