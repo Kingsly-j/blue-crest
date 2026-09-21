@@ -227,7 +227,7 @@ a:focus-visible, button:focus-visible { outline: 3px solid #60a5fa; outline-offs
  .tracking-parcel { grid-template-columns:150px 1fr; }
  .tracking-parcel-grid { grid-template-columns:repeat(3,minmax(0,1fr)); }
 }
-.floating-tools { position:fixed; inset-inline-end:20px; bottom:calc(20px + env(safe-area-inset-bottom)); z-index:70; display:flex; flex-direction:column; align-items:center; gap:12px; }
+.floating-tools { position:fixed; inset-inline-end:20px; bottom:calc(100px + env(safe-area-inset-bottom)); z-index:70; display:flex; flex-direction:column; align-items:center; gap:12px; }
 .floating-whatsapp { display:grid; place-items:center; width:58px; height:58px; border-radius:50%; box-shadow:0 5px 20px #14233735; transition:transform .15s,background .15s; }
 .floating-whatsapp { position:fixed; left:20px; bottom:calc(20px + env(safe-area-inset-bottom)); background:#20bd5a; color:white; font-size:31px; }
 .floating-whatsapp:hover { background:#139746; transform:translateY(-2px); }
@@ -249,7 +249,7 @@ html[dir=rtl] .tracking-history li:last-child { border-right-color:transparent; 
 html[dir=rtl] .tracking-milestones li:first-child:before { left:0; }
 html[dir=rtl] .tracking-milestones li:last-child:before { left:50%; }
 @media(max-width:700px) {
- .floating-tools { inset-inline-end:14px; bottom:calc(14px + env(safe-area-inset-bottom)); }
+ .floating-tools { inset-inline-end:14px; bottom:calc(90px + env(safe-area-inset-bottom)); }
  .floating-whatsapp { width:52px; height:52px; font-size:27px; }
  .floating-whatsapp { left:14px; bottom:calc(14px + env(safe-area-inset-bottom)); }
  .shipment-tracking-page { padding-bottom:150px; }
