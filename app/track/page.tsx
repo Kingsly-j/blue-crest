@@ -25,7 +25,8 @@ export default function TrackPage() {
 
   useEffect(() => {
     let active = true;
-    const initial = new URLSearchParams(window.location.search).get("code")?.trim();
+    const params = new URLSearchParams(window.location.search);
+    const initial = (params.get("code") || params.get("trackingnumber") || params.get("trackingNumber"))?.trim();
     if (!initial) return;
     const timer = setTimeout(async () => {
       setCode(initial);

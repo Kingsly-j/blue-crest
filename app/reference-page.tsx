@@ -49,7 +49,8 @@ export default function ReferencePage({ html }: { html: string }) {
     event.preventDefault();
     const form = event.target as HTMLFormElement;
     if (form.dataset.formKind === "tracking") {
-      const code = String(new FormData(form).get("trackingnumber") || "").trim();
+      const data = new FormData(form);
+      const code = String(data.get("trackingnumber") || data.get("code") || "").trim();
       if (code) router.push(`/track?code=${encodeURIComponent(code)}`);
       return;
     }
