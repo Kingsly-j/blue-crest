@@ -11,7 +11,9 @@ export default function ReferencePage({ html }: { html: string }) {
   const { t } = useLanguage();
   function translateHtmlText(text: string) {
     const decoded = text.replace(/&amp;/g, "&").replace(/&nbsp;/g, " ").replace(/&quot;/g, '\"').replace(/&#0?39;|&#x27;/g, "'");
-    return t(decoded).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+    const translated = t(decoded);
+    if (translated === decoded) return text;
+    return translated.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
   }
   const translatedHtml = html.replace(/>([^<]+)</g, (_match, text) => `>${translateHtmlText(text)}<`).replace(/placeholder="([^"]*)"/g, (_match, text) => `placeholder="${translateHtmlText(text)}"`);
   const router = useRouter();
