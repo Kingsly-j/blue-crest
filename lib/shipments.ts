@@ -1,7 +1,7 @@
 import { collection, deleteDoc, doc, getDocsFromServer, onSnapshot, orderBy, query, runTransaction, setDoc } from "firebase/firestore";
 import { db } from "@/utils/firebase/client";
 
-export type ShipmentStatus = "Booked" | "In transit" | "Customs" | "Delivered" | "Order Confirmed" | "Picked by Courier" | "On The Way" | "Custom Hold";
+export type ShipmentStatus = "Booked" | "In transit" | "On hold" | "Customs" | "Delivered" | "Order Confirmed" | "Picked by Courier" | "On The Way" | "Custom Hold";
 export type ShipmentEvent = { id: string; date: string; status: ShipmentStatus; location: string; description: string; source?: "automatic"; recordedBy?: string };
 export type RouteStop = { id: string; label: string; latitude: number; longitude: number; kind: "origin" | "stop" | "current" | "destination" };
 export type Shipment = {
@@ -19,10 +19,10 @@ export type Shipment = {
 };
 
 export const SHIPMENTS_COLLECTION = "shipments";
-export const shipmentStatuses: ShipmentStatus[] = ["Order Confirmed", "Picked by Courier", "On The Way", "Custom Hold", "Delivered", "Booked", "In transit", "Customs"];
-export const trackingMilestones = ["Order Confirmed", "Picked by Courier", "On The Way", "Custom Hold", "Delivered"] as const;
+export const shipmentStatuses: ShipmentStatus[] = ["Order Confirmed", "Picked by Courier", "In transit", "On hold", "Delivered", "Booked"];
+export const trackingMilestones = ["Order Confirmed", "Picked by Courier", "In transit", "On hold", "Delivered"] as const;
 export function statusLabel(status: ShipmentStatus) {
-  return ({ Booked: "Order Confirmed", "In transit": "On The Way", Customs: "Custom Hold" } as Partial<Record<ShipmentStatus, string>>)[status] ?? status;
+  return ({ Booked: "Order Confirmed", "On The Way": "In transit", "Custom Hold": "On hold", Customs: "On hold" } as Partial<Record<ShipmentStatus, string>>)[status] ?? status;
 }
 // Kept for existing UI messages. A successful operation now always means Firestore acknowledged it.
 export function shipmentStorageNotice() { return ""; }
@@ -48,7 +48,7 @@ export function generateTrackingCode() {
   return `BC-${new Date().getFullYear()}-${crypto.randomUUID().replaceAll("-", "").slice(0,12).toUpperCase()}`;
 }
 export function progressForStatus(status: ShipmentStatus) {
-  return { Booked: 18, "Order Confirmed": 18, "Picked by Courier": 35, "In transit": 55, "On The Way": 55, Customs: 78, "Custom Hold": 78, Delivered: 100 }[status];
+  return { Booked: 18, "Order Confirmed": 18, "Picked by Courier": 35, "In transit": 55, "On The Way": 55, "On hold": 55, Customs: 55, "Custom Hold": 55, Delivered: 100 }[status];
 }
 export async function readShipments() {
   const snapshot = await cloudOperation(getDocsFromServer(query(collection(db, SHIPMENTS_COLLECTION), orderBy("createdAt", "desc"))));
